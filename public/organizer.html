@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Moderation · DevFest Toronto</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="page">
+  <section id="login" class="narrow" hidden>
+    <h1>Organizer sign-in</h1>
+    <form id="login-form" class="panel stack">
+      <label class="field">Email <input name="email" type="email" autocomplete="username" required></label>
+      <label class="field">Password <input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button primary" type="submit">Sign in</button>
+      <p id="login-error" class="status error" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="dashboard" hidden>
+    <header class="toolbar">
+      <h1>Photo moderation</h1>
+      <span id="live" class="live">Connecting…</span>
+      <span class="spacer"></span>
+      <span id="who" class="muted"></span>
+      <button id="logout" class="button" type="button">Sign out</button>
+    </header>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-status="pending">Pending <b id="count-pending">0</b></button>
+      <button class="tab" role="tab" data-status="approved">Approved <b id="count-approved">0</b></button>
+      <button class="tab" role="tab" data-status="rejected">Rejected <b id="count-rejected">0</b></button>
+    </div>
+
+    <div id="bulk" class="toolbar" hidden>
+      <label class="check"><input id="select-all" type="checkbox"> <span>Select all shown</span></label>
+      <button id="bulk-approve" class="button primary" type="button" disabled>Approve selected (0)</button>
+    </div>
+
+    <p id="notice" class="status" role="status"></p>
+    <p id="empty" class="muted" hidden></p>
+    <div id="photos" class="photo-grid"></div>
+    <button id="load-more" class="button" type="button" hidden>Load more</button>
+  </section>
+
+  <dialog id="reject-dialog">
+    <form id="reject-form" method="dialog" class="stack">
+      <h2>Reject this photo?</h2>
+      <label class="field">Reason (optional, visible to organizers only)
+        <textarea name="reason" rows="3" maxlength="500"></textarea>
+      </label>
+      <div class="actions">
+        <button class="button" value="cancel" type="submit">Cancel</button>
+        <button class="button danger" value="confirm" type="submit">Reject photo</button>
+      </div>
+    </form>
+  </dialog>
+  <script type="module" src="/organizer.js"></script>
+</body>
+</html>

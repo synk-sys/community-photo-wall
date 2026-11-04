@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share a Photo · DevFest Toronto</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="page">
+  <main class="narrow">
+    <h1>DevFest Toronto Photo Wall</h1>
+    <p>Share a photo from today. Once our team has reviewed it, it can appear on the big screen.</p>
+    <form id="upload-form" class="panel stack">
+      <label class="field">Your photo (JPEG, PNG or WebP, up to 15 MB)
+        <input type="file" name="photo" accept="image/jpeg,image/png,image/webp" required>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="consentToDisplay" value="true" required>
+        <span>I took this photo or have permission to share it, and I agree to it being displayed publicly at the event.</span>
+      </label>
+      <button class="button primary" type="submit">Upload photo</button>
+      <p id="upload-status" class="status" role="status"></p>
+    </form>
+  </main>
+  <script type="module" src="/upload.js"></script>
+</body>
+</html>
